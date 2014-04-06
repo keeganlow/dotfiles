@@ -22,7 +22,6 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 # faster rails env loading
 export RUBY_GC_MALLOC_LIMIT=250000000
 export RUBY_GC_HEAP_INIT_SLOTS=800000
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 export ANDROID_HOME=~/Android/sdk
 
 export LANG=en_US.utf8
