@@ -1,6 +1,8 @@
+[user]
+	name = Keegan Lowenstein
 [core]
-	excludesfile = ~/.gitignore
-[push]
-	default = upstream
+	editor = vim
+	excludesfile = ~/.gitignore_global
+
 [color]
 	ui = true
