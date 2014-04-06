@@ -69,9 +69,5 @@ fi
   #export TERM='xterm-color'
 #fi
 
-# gosh!
-ssh-add &> /dev/null
-ssh-agent &> /dev/null
-
 set editing-mode vi
 set keymap vi-command
