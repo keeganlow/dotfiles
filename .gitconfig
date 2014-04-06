@@ -1,0 +1,6 @@
+[core]
+	excludesfile = ~/.gitignore
+[push]
+	default = upstream
+[color]
+	ui = true

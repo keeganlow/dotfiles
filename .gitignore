@@ -1,0 +1,13 @@
+.svn
+.*.sw?
+*.gif
+*.png
+*.jpg
+log/*
+tmp/*
+rerun.txt
+ignore.txt
+.sensitive
+.bundle
+.sass-cache/
+tags

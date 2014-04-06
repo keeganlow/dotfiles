@@ -1,0 +1,98 @@
+# Run this after editing any of your dotfiles
+alias :q='exit'
+alias src='source ~/.bashrc'
+
+alias wget="curl -O"
+alias octave='exec "/Applications/Octave.app/Contents/Resources/bin/octave"'
+
+alias l='ls -lartp'
+alias la='ls -la'
+alias lg='ls -la | grep'
+alias hg='history | grep'
+
+# .. is one of my most used commands
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+alias cl='clear'
+
+alias lc='wc -l'
+
+# Git Specific
+# git commit all with message -- no quotes needed
+function gcm() { git commit -m "$*"; }
+alias gs='git status -sb'
+alias ga='git add'
+alias gb='git branch'
+alias gbg='git branch | grep'
+function gcg() { git checkout `git branch | grep $1 | tail -1`; }
+alias gd='git diff'
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias grim="git rebase -i master"
+
+# gitk without the shell spew
+alias gk='gitk --all > /dev/null 2>&1 &'
+alias td='git diff | grep TODO'
+alias gap='git add -p'
+alias gco='git checkout'
+function gcg() { git checkout `git branch | grep $*`; }
+
+alias p='python'
+
+# run terminal vim from a macvim distribution
+alias vim='/Applications/MacVim/MacVim.app/Contents/MacOS/Vim'
+alias yolo='kill -9'
+
+# If you're reading this and you aren't Keegan, do this. Trust me.
+alias ali='vim ~/.aliases'
+
+# Rails specific
+alias b='bundle'
+alias be='bundle exec'
+alias rt='bundle exec rake test'
+
+# tmux stuff
+alias t='tmux'
+alias tmux="TERM=screen-256color-bce tmux"
+
+alias kt="yolo ` pgrep -L ruby | grep test | awk '{print $1}'`"
+alias rs='script/server'
+alias rc='rails console'
+alias rr='rake routes'
+alias rrg='rake routes | grep'
+alias r='ruby'
+alias rake='bundle exec rake'
+alias devdown='rake dev_env_shutdown'
+alias devup='rake dev_env_startup'
+alias tf='tail -f'
+
+# But seriously, just use ack or ag
+alias grin='grep -rin'
+alias grev='grep -v'
+
+# necessary when using tmux: set -g default-terminal "screen-256color"
+# so things like top still work when SSHed to a remote host
+alias ssh='TERM=xterm ssh'
+
+# useful if you're debugging something really nasty
+alias bliss='bundle install; rob; script/server'
+
+alias wtf='ping google.com'
+
+# Misc:
+
+# signal aliases: just give them a pid
+alias quit='kill -s QUIT'
+alias usr2='kill -s USR2'
+alias cdgems='cd `rvm gemhome`'
+
+alias duh='du -h'
+
+function random_say_voice() { say -v ? | awk '{print $1}' | perl -MList::Util=shuffle -e 'print shuffle(<STDIN>);' | head -1; }
+
+function nightmare() { cat /dev/urandom | head -$1 | iconv -s -c -t UTF-8 | say -v $2; }
+
+function scarytimes() { nightmare 500 `random_say_voice`; }
+
+
