@@ -45,7 +45,7 @@ alias vim='/Applications/MacVim/MacVim.app/Contents/MacOS/Vim'
 alias yolo='kill -9'
 
 # If you're reading this and you aren't Keegan, do this. Trust me.
-alias ali='vim ~/.aliases'
+alias ali='vim ~/dotfiles/.aliases'
 
 # Rails specific
 alias b='bundle'
