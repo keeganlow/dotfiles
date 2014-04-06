@@ -1,6 +1,4 @@
-# MacPorts Installer addition on 2012-03-10_at_02:44:37: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 # add home dir bin to path; /usr/local/bin/ for nodey stuff
 export PATH="$PATH:~/bin:Developer/usr/bin/gcc:/usr/local/bin"

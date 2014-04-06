@@ -38,14 +38,6 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 # if possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 
-##
-# Your previous /Users/keegan/.bash_profile file was backed up as /Users/keegan/.bash_profile.macports-saved_2012-03-10_at_02:44:37
-##
-
-# MacPorts Installer addition on 2012-03-10_at_02:44:37: adding an appropriate PATH variable for use with MacPorts.
-# export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
-
 # speed up rails env startup: http://stefanwienert.net/blog/2012/07/13/how-to-accelerate-rails-3-starting-up-time-under-ruby-1-dot-9-3/
 export RUBY_HEAP_MIN_SLOTS=800000
 export RUBY_HEAP_FREE_MIN=100000
