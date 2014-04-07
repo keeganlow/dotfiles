@@ -59,7 +59,6 @@ alias rt='bundle exec rake test'
 alias t='tmux'
 alias tmux="TERM=screen-256color-bce tmux"
 
-alias kt="yolo ` pgrep -L ruby | grep test | awk '{print $1}'`"
 alias rs='script/server'
 alias rc='rails console'
 alias rr='rake routes'
