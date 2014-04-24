@@ -97,4 +97,6 @@ function nightmare() { cat /dev/urandom | head -$1 | iconv -s -c -t UTF-8 | say 
 
 function scarytimes() { nightmare 500 `random_say_voice`; }
 
+# Tmux
+alias tns='tmux new-session -s'
 

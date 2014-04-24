@@ -230,17 +230,12 @@ set clipboard=unnamed
 " reload files they change on disk (e.g., git checkout)
 set autoread
 
-" create new tabs with tn
-ca tn tabnew
-
 " highlight whitespace symbols
 hi NonText ctermfg=240 guifg=#666666
 
 " trailing whitespace intentional
 map <leader>a :Ag 
 
-" search all Dash's indexed methods for method under cursor
-"map <leader>d :Dash!<CR> meh - not using this
 nmap <leader>d ?^\s*def <CR> :let @/ = "" <CR>
 
 nmap <leader>p :CtrlPClearAllCaches<CR>
@@ -273,8 +268,7 @@ if executable('ag')
 endif
 
 " hardmode always
-"autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-" hard mode
+"autocmd vimenter,bufnewfile,bufreadpost * silent! call hardmode()
 
 " indent the contents of the current ruby method
 function! IndentRubyMethod()
@@ -285,10 +279,6 @@ map <leader>i :call IndentRubyMethod()<CR>
 " green/red diffs
 highlight diffAdded guifg=#00bf00
 highlight diffRemoved guifg=#bf0000
-
-" annoying 80 character highlighting
-"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-"match OverLength /\%81v.\+/
 
 " Current line customization
 " high light current line in insert mode
@@ -367,7 +357,6 @@ function! s:fixhash() range
   execute a:firstline.','.a:lastline 'Tab /:\zs'
 endfunction
 command! -range FixHash :<line1>,<line2>call s:fixhash()
-
 
 " Ugh, vim 7.4 doesn't indent the following by default - breaks shit
 let g:html_indent_inctags = "html,body,head,tbody"
