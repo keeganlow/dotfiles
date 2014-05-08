@@ -2,6 +2,8 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 # add home dir bin to path; /usr/local/bin/ for nodey stuff
 export PATH="$PATH:~/bin:Developer/usr/bin/gcc:/usr/local/bin"
+# alternate nodey stuff
+export PATH="$HOME/local/bin:$PATH"
 
 # mysql: finds mysql, mysqladmin utilities
 export PATH="$PATH:/usr/local/mysql/bin"
