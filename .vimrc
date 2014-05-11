@@ -253,8 +253,9 @@ nmap <leader>o zR <bar> :only<CR><CR>
 map <Leader>rt :!ctags --tag-relative --exclude=.git --languages=ruby -R * `rvm gemdir`/gems/*<CR><CR>
 
 map <silent> <leader>so :source ~/.vimrc<CR>
-map <leader>ev :tabedit $MYVIMRC<CR>
-map <leader>et :tabedit ~/.tmux.conf<CR>
+map <leader>ev :tabedit ~/dotfiles/.vimrc<CR>
+map <leader>et :tabedit ~/dotfiles/.tmux.conf<CR>
+map <leader>bs :! ~/dotfiles/bootstrap.sh<CR>
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
