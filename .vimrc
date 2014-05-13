@@ -30,6 +30,7 @@ Bundle 'ervandew/supertab'
 " this version plays nicely with supertab
 Bundle 'ervandew/snipmate.vim'
 Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
 
 " set 256 colors
 set t_Co=256
@@ -255,6 +256,7 @@ map <Leader>rt :!ctags --tag-relative --exclude=.git --languages=ruby -R * `rvm 
 map <silent> <leader>so :source ~/.vimrc<CR>
 map <leader>ev :tabedit ~/dotfiles/.vimrc<CR>
 map <leader>et :tabedit ~/dotfiles/.tmux.conf<CR>
+map <leader>df :tabedit ~/dotfiles/<CR>
 map <leader>bs :! ~/dotfiles/bootstrap.sh<CR>
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
@@ -361,3 +363,7 @@ command! -range FixHash :<line1>,<line2>call s:fixhash()
 
 " Ugh, vim 7.4 doesn't indent the following by default - breaks shit
 let g:html_indent_inctags = "html,body,head,tbody"
+
+
+" use html highlighting for ejs
+au BufNewFile,BufRead *.ejs set filetype=html
