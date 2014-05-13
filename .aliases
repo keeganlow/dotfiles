@@ -39,6 +39,7 @@ alias gk='gitk --all > /dev/null 2>&1 &'
 alias td='git diff | grep TODO'
 alias gap='git add -p'
 alias gco='git checkout'
+alias gdom='git diff origin/master'
 function gcg() { git checkout `git branch | grep $*`; }
 
 alias p='python'
@@ -49,6 +50,7 @@ alias yolo='kill -9'
 
 # If you're reading this and you aren't Keegan, do this. Trust me.
 alias ali='vim ~/dotfiles/.aliases'
+alias dotup='cd ~/dotfiles && ./bootstrap.sh && cd -'
 
 # Rails specific
 alias b='bundle'
