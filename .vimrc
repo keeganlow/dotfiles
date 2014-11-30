@@ -27,6 +27,9 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/ruby-matchit'
 Bundle 'ervandew/supertab'
+Bundle 'fatih/vim-go'
+Bundle 'groenewege/vim-less'
+Bundle 'ConradIrwin/vim-bracketed-paste'
 
 " this version plays nicely with supertab
 Bundle 'ervandew/snipmate.vim'
