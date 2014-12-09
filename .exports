@@ -25,3 +25,7 @@ export RUBY_GC_HEAP_INIT_SLOTS=800000
 export ANDROID_HOME=~/Android/sdk
 
 export LANG=en_US.utf8
+
+export GOPATH=~/Code/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN

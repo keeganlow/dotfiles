@@ -85,6 +85,7 @@ alias bliss='bundle install; rob; script/server'
 alias wtf='ping google.com'
 
 # Misc:
+alias timenow='date +"%s"'
 
 # signal aliases: just give them a pid
 alias quit='kill -s QUIT'

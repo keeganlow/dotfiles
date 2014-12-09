@@ -14,3 +14,5 @@ export PATH="$PATH:~/scripts/bash"
 # for npm
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH=/usr/local/bin/lib/node_modules:$PATH
+
+export PATH=$PATH:${GOPATH//://bin:}/bin

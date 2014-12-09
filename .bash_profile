@@ -42,8 +42,8 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 
 # speed up rails env startup: http://stefanwienert.net/blog/2012/07/13/how-to-accelerate-rails-3-starting-up-time-under-ruby-1-dot-9-3/
-export RUBY_HEAP_MIN_SLOTS=800000
-export RUBY_HEAP_FREE_MIN=100000
+# export RUBY_HEAP_MIN_SLOTS=800000
+# export RUBY_HEAP_FREE_MIN=100000
 export RUBY_HEAP_SLOTS_INCREMENT=300000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=79000000

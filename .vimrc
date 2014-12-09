@@ -26,6 +26,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/ruby-matchit'
 Bundle 'ervandew/supertab'
+Bundle 'fatih/vim-go'
 
 " this version plays nicely with supertab
 Bundle 'ervandew/snipmate.vim'
@@ -291,11 +292,12 @@ autocmd InsertEnter * highlight  CursorLine ctermbg=236 ctermfg=None
 autocmd InsertLeave * highlight  CursorLine ctermbg=235 ctermfg=None
 
 " configure vimux-ruby-test so ruby tests can run in 20% horizontal pane.
-let g:vimux_ruby_cmd_unit_test = "./bin/testunit"
+"let g:vimux_ruby_cmd_unit_test = "./bin/testunit"
+let g:vimux_ruby_cmd_unit_test = "bundle exec ruby"
 let g:vimux_ruby_cmd_all_tests = "rake test:parallel"
 
 " Run the current file with testunit
-map <Leader>Tf :call VimuxRunCommand("clear; ./bin/testunit " . bufname("%"))<CR>
+map <Leader>Tf :call VimuxRunCommand("clear; bundle exec ruby " . bufname("%"))<CR>
 
 " Run the current test
 map <Leader>Ts :RunRubyFocusedTest<CR>
@@ -336,7 +338,7 @@ nnoremap <leader>sb :silent :! spotify prev<CR> :redraw!<CR>
 
 " Chords
 call arpeggio#map('n', '', 0, 'ts', ':RunRubyFocusedTest<CR>')
-call arpeggio#map('n', '', 0, 'tf', ':call VimuxRunCommand("clear; ./bin/testunit " . bufname("%"))<CR>')
+call arpeggio#map('n', '', 0, 'tf', ':call VimuxRunCommand("clear; bundle exec ruby " . bufname("%"))<CR>')
 call arpeggio#map('n', '', 0, 'vl', ':VimuxRunLastCommand<CR>')
 
 call arpeggio#map('n', '', 0, 'vp', ':VimuxPromptCommand<CR>')
@@ -367,3 +369,7 @@ let g:html_indent_inctags = "html,body,head,tbody"
 
 " use html highlighting for ejs
 au BufNewFile,BufRead *.ejs set filetype=html
+
+" golang stuff
+autocmd FileType go setlocal nolist tabstop=4 shiftwidth=4 expandtab softtabstop=4
+call arpeggio#map('n', '', 0, 'gr', ':call VimuxRunCommand("clear; go run " . bufname("%"))<CR>')
