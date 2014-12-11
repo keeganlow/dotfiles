@@ -1,6 +1,7 @@
 install tmux
 install reattach-to-user-namespace
 install bash-completion
+install bash-git-prompt
 install git
 install hub
 install node
@@ -36,6 +37,6 @@ cask install dropbox
 cask install evernote
 cask install flux
 cask install skype
+cask install caffeine
 #cask install balsamiq-mockups
 #cask install bartender
-#cask install caffeine
