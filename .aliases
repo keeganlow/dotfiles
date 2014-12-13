@@ -16,6 +16,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 alias dots='cd ~/dotfiles'
+alias dotfiles='cd ~/dotfiles'
 
 alias cl='clear'
 
