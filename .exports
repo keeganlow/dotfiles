@@ -26,6 +26,6 @@ export ANDROID_HOME=~/Android/sdk
 
 export LANG=en_US.utf8
 
-export GOPATH=~/Code/go
+export GOPATH=~/code/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
