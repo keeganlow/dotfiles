@@ -2,39 +2,41 @@
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-markdown'
-Bundle 'suan/vim-instant-markdown'
-Bundle 'bling/vim-airline'
-Bundle 'benmills/vimux'
-Bundle 'pgr0ss/vimux-ruby-test'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'tommcdo/vim-fugitive-blame-ext'
-Bundle 'kana/vim-arpeggio'
-Bundle 'godlygeek/tabular'
-Bundle 'rking/ag.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'vim-scripts/ruby-matchit'
-Bundle 'ervandew/supertab'
-Bundle 'fatih/vim-go'
-Bundle 'groenewege/vim-less'
-Bundle 'ConradIrwin/vim-bracketed-paste'
+Plugin 'gmarik/vundle'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-markdown'
+Plugin 'suan/vim-instant-markdown'
+Plugin 'bling/vim-airline'
+Plugin 'benmills/vimux'
+Plugin 'pgr0ss/vimux-ruby-test'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'tommcdo/vim-fugitive-blame-ext'
+Plugin 'kana/vim-arpeggio'
+Plugin 'godlygeek/tabular'
+Plugin 'rking/ag.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-scripts/ruby-matchit'
+Plugin 'ervandew/supertab'
+Plugin 'fatih/vim-go'
+Plugin 'groenewege/vim-less'
+Plugin 'ConradIrwin/vim-bracketed-paste'
 
 " this version plays nicely with supertab
-Bundle 'ervandew/snipmate.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'ervandew/snipmate.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+
+call vundle#end()            " required
 
 " set 256 colors
 set t_Co=256
