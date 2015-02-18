@@ -88,6 +88,9 @@ alias wtf='ping google.com'
 # Misc:
 alias timenow='date +"%s"'
 
+# don't use xcode's crappy ctags
+alias ctags="`brew --prefix`/bin/ctags"
+
 # signal aliases: just give them a pid
 alias quit='kill -s QUIT'
 alias usr2='kill -s USR2'

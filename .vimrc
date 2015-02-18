@@ -256,7 +256,8 @@ nmap <leader>gco :!git checkout
 nmap <leader>o zR <bar> :only<CR><CR>
 
 " regenerate the tags file, including project gems
-map <Leader>rt :!ctags --tag-relative --exclude=.git --languages=ruby -R * `rvm gemdir`/gems/*<CR><CR>
+map <Leader>rv :!ctags --tag-relative --exclude=.git --languages=ruby -R * `rvm gemdir`/gems/*<CR><CR>
+map <Leader>rb :!ctags --tag-relative --exclude=.git --languages=ruby -R * `rbenv prefix`/*<CR><CR>
 
 map <silent> <leader>so :source ~/.vimrc<CR>
 map <leader>ev :tabedit ~/dotfiles/.vimrc<CR>
