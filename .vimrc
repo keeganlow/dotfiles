@@ -378,3 +378,6 @@ au BufNewFile,BufRead *.ejs set filetype=html
 " golang stuff
 autocmd FileType go setlocal nolist tabstop=4 shiftwidth=4 expandtab softtabstop=4
 call arpeggio#map('n', '', 0, 'gr', ':call VimuxRunCommand("clear; go run " . bufname("%"))<CR>')
+
+" coffeescript stuff
+let @c = '^y$iconsole.log("%: kjA #{kjpA}")kj'
