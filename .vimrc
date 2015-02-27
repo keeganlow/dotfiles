@@ -29,6 +29,8 @@ Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'groenewege/vim-less'
 Plugin 'ConradIrwin/vim-bracketed-paste'
+Plugin 'mtscout6/vim-cjsx'
+Plugin 'slim-template/vim-slim'
 
 " this version plays nicely with supertab
 Plugin 'ervandew/snipmate.vim'
@@ -41,6 +43,9 @@ call vundle#end()            " required
 set t_Co=256
 
 color muon
+
+" Make the mouse (*gasp*) usable on large screens
+set ttymouse=sgr
 
 " Attempt to determine the type of a file based on its name and possibly its
 " contents.  Use this to allow intelligent auto-indenting for each filetype,
