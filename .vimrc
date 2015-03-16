@@ -45,7 +45,11 @@ set t_Co=256
 color muon
 
 " Make the mouse (*gasp*) usable on large screens
-set ttymouse=sgr
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
 
 " Attempt to determine the type of a file based on its name and possibly its
 " contents.  Use this to allow intelligent auto-indenting for each filetype,
