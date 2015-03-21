@@ -31,6 +31,7 @@ Plugin 'groenewege/vim-less'
 Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'mtscout6/vim-cjsx'
 Plugin 'slim-template/vim-slim'
+Plugin 'tmux-plugins/vim-tmux'
 
 " this version plays nicely with supertab
 Plugin 'ervandew/snipmate.vim'
