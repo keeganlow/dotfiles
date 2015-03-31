@@ -107,3 +107,4 @@ function scarytimes() { nightmare 500 `random_say_voice`; }
 # Tmux
 alias tns='tmux new-session -s'
 
+alias sens='vim ~/.sensitive'
