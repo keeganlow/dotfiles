@@ -1,1 +1,2 @@
 # TODO: move functions currently in .aliases
+function json() { python -m json.tool | ccat | less -R; }

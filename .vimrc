@@ -353,7 +353,7 @@ nnoremap <leader>sb :silent :! spotify prev<CR> :redraw!<CR>
 
 " Chords
 call arpeggio#map('n', '', 0, 'ts', ':RunRubyFocusedTest<CR>')
-call arpeggio#map('n', '', 0, 'tf', ':call VimuxRunCommand("clear; bundle exec ruby " . bufname("%"))<CR>')
+call arpeggio#map('n', '', 0, 'tf', ':call VimuxRunCommand("clear; bundle exec rspec " . bufname("%"))<CR>')
 call arpeggio#map('n', '', 0, 'vl', ':VimuxRunLastCommand<CR>')
 
 call arpeggio#map('n', '', 0, 'vp', ':VimuxPromptCommand<CR>')
