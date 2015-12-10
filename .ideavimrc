@@ -1,0 +1,5 @@
+" no more pesky escape (for insert and visual mode)
+imap kj <Esc>
+imap kJ <Esc>
+imap Kj <Esc>
+imap KJ <Esc>

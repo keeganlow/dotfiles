@@ -63,7 +63,7 @@ alias t='tmux'
 alias tmux="TERM=screen-256color-bce tmux"
 
 alias rs='script/server'
-alias rc='rails console'
+alias rc='bundle exec rails console'
 alias rr='rake routes'
 alias rrg='rake routes | grep'
 alias r='ruby'
