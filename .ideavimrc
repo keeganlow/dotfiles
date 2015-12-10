@@ -3,3 +3,7 @@ imap kj <Esc>
 imap kJ <Esc>
 imap Kj <Esc>
 imap KJ <Esc>
+
+
+let mapleader = ","
+map <silent> <leader>so :source ~/.ideavimrc<CR>
