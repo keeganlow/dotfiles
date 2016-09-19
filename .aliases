@@ -110,3 +110,4 @@ alias tns='tmux new-session -s'
 alias sens='vim ~/.sensitive'
 
 alias updatedb="sudo /usr/libexec/locate.updatedb"
+alias focus="vim ~/.focush"
