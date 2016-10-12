@@ -14,18 +14,18 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-markdown'
 Plugin 'suan/vim-instant-markdown'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'edkolev/tmuxline.vim'
 Plugin 'benmills/vimux'
 Plugin 'pgr0ss/vimux-ruby-test'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tommcdo/vim-fugitive-blame-ext'
 Plugin 'kana/vim-arpeggio'
-"Plugin 'godlygeek/tabular'
 Plugin 'rking/ag.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/ruby-matchit'
-"Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'groenewege/vim-less'
@@ -34,8 +34,6 @@ Plugin 'mtscout6/vim-cjsx'
 Plugin 'slim-template/vim-slim'
 Plugin 'tmux-plugins/vim-tmux'
 
-" this version plays nicely with supertab
-"Plugin 'ervandew/snipmate.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 
@@ -222,6 +220,13 @@ let g:snippets_dir = "~/.vim/snippets"
 " used patched fonts for airline arrows/triangles
 let g:airline_powerline_fonts=1
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_close_button = 0
+
+
+let g:airline_theme='molokai'
+
 " quickly edit ruby snippets
 map <leader>r :tabnew ~/.vim/snippets/ruby.snippets<CR><CR>
 
@@ -251,7 +256,7 @@ set autoread
 hi NonText ctermfg=240 guifg=#666666
 
 " trailing whitespace intentional
-map <leader>a :Ag 
+map <leader>a :Ag
 
 nmap <leader>d ?^\s*def <CR> :let @/ = "" <CR>
 
@@ -261,7 +266,7 @@ nmap <leader>gb :Gblame<CR>
 nmap <leader>gs :Gstatus<CR>
 nmap <leader>gd :Gdiff<CR>
 nmap <leader>gcm :Gcommit<CR>
-nmap <leader>gco :!git checkout 
+nmap <leader>gco :!git checkout
 
 " show only the current window and expand folds (handy after :Gdiff)
 nmap <leader>o zR <bar> :only<CR><CR>
@@ -339,12 +344,12 @@ map <Leader>vo :VimuxOpenPane<CR>
 " Interrupt any command running in the runner pane
 map <Leader>vx :VimuxInterruptRunner<CR>
 "
-" Function to tell Vimux to have make tmux zoom its runner pane. 
+" Function to tell Vimux to have make tmux zoom its runner pane.
 function! VimuxZoomRunner()
   call VimuxInspectRunner()
   call system("tmux resize-pane -Z")
 endfunction
- 
+
 " Zoom the runner pane (use <bind-key> z to restore runner pane)
 map <Leader>vz :call VimuxZoomRunner()<CR>
 
