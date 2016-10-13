@@ -207,6 +207,7 @@ vmap <leader>gV :Gitv! --all<cr>
 " manage working dir:  the nearest ancestor that contains a .git
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_max_height = 90
+let g:ctrlp_max_depth = 40
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:90,results:90'
 
 " TODO: investigate flog.vim errors and fix
