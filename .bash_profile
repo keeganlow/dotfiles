@@ -12,6 +12,8 @@ for file in ~/.{path,bash_prompt,exports,aliases,git-prompt.sh,functions,extra};
 done
 unset file
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # TODO: this should split across appropriately named *.local files
 source ~/.sensitive
 

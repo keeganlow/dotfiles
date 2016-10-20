@@ -16,7 +16,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'edkolev/tmuxline.vim'
+"Plugin 'edkolev/tmuxline.vim' "leave this commented out unless changing theme
 Plugin 'benmills/vimux'
 Plugin 'pgr0ss/vimux-ruby-test'
 Plugin 'christoomey/vim-tmux-navigator'

@@ -1,2 +1,29 @@
 # TODO: move functions currently in .aliases
 function json() { python -m json.tool | ccat | less -R; }
+
+# fzf is a gamechanger
+#
+# inspired by: https://github.com/atweiden/fzf-extras
+snipe () {
+
+  # gives the following behavior:
+  #   calling `snipe less` opens fzf with the query 'less (i.e., exact match "less")
+  #   calling `snipe` opens fzf with the query input prefilled  with a single quote,
+  #     putting you into exact match mode
+  #
+  #   when looking to kill a process, i almost always want to use exact match
+  #   searches, and this gives me that
+  #
+  # this also removes the current fzf command from showing up in the fzf interface
+  # as you'd expect if you're in the habit of `ps aux | grep [f]oo`
+  pid=$(ps -ef | sed 1d | grep -v "fzf -m --query='$1" | fzf -m --query="'$1" | awk '{print $2}')
+
+  # -n checks that the variable not empty
+  if [ -n "$pid" ]
+  then
+    # could do `kill ${2:-9} $pid` to use arg $2 as the -numeric param to kill,
+    # falling back to -9; as it stands this function is a shiny hammer, but a
+    # hammer nonetheless
+    kill -9 $pid
+  fi
+}
