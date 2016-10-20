@@ -8,11 +8,9 @@ export PATH="$HOME/bin:$PATH"
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 for file in ~/.{path,bash_prompt,exports,aliases,git-prompt.sh,functions,extra}; do
-    [ -r "$file" ] && source "$file"
+    [ -r "$file" ] && source "$file" && echo "sourced $file"
 done
 unset file
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # TODO: this should split across appropriately named *.local files
 source ~/.sensitive
@@ -53,15 +51,10 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-# probably not necessary
-#if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-# NOTE: disabling conditional to see if this is safe across this board
-# the xterm-256color needs to be exported for vim color themes to work in tmux
-  #export TERM='xterm-256color'
-  export TERM='screen-256color'
-#else
-  #export TERM='xterm-color'
-#fi
+export TERM='screen-256color'
 
 set editing-mode vi
 set keymap vi-command
+
+# this doesn't work for some reason if it's earlier in the file
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash && echo "sourced ~/.fzf.bash"
