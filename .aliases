@@ -64,8 +64,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 
 alias rs='script/server'
 alias rc='bundle exec rails console'
-alias rr='rake routes'
-alias rrg='rake routes | grep'
+alias rr='rake routes | fzf'
 alias r='ruby'
 alias rake='bundle exec rake'
 alias devdown='rake dev_env_shutdown'
@@ -112,4 +111,4 @@ alias sens='vim ~/.sensitive'
 alias updatedb="sudo /usr/libexec/locate.updatedb"
 alias focus="vim ~/.focush"
 
-alias tp='find ~/.tmuxp/* -type f | fzf | xargs tmuxp load -y'
+alias tp='find ~/.tmuxp/* -type f | fzf-tmux | xargs tmuxp load -y'

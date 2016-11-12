@@ -27,3 +27,12 @@ snipe () {
     kill -9 $pid
   fi
 }
+
+tl () {
+
+  # TODO: get/designate active sessions
+
+  # get tmuxp available sessions
+  yaml=$(find ~/.tmuxp/* -type f | fzf-tmux)
+  tmuxp load -y $yaml
+}
