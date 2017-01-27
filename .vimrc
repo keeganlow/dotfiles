@@ -33,6 +33,7 @@ Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'mtscout6/vim-cjsx'
 Plugin 'slim-template/vim-slim'
 Plugin 'tmux-plugins/vim-tmux'
+Plugin 'hashivim/vim-terraform'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
