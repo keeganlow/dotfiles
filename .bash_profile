@@ -56,5 +56,4 @@ export TERM='screen-256color'
 set editing-mode vi
 set keymap vi-command
 
-# this doesn't work for some reason if it's earlier in the file
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash && echo "sourced ~/.fzf.bash"
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
