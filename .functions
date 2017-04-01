@@ -36,3 +36,11 @@ tl () {
   yaml=$(find ~/.tmuxp/* -type f | fzf-tmux)
   tmuxp load -y $yaml
 }
+
+# Adapted from: https://github.com/junegunn/fzf/wiki/examples#git
+gco () {
+  local branches branch
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
