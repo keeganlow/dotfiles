@@ -35,6 +35,7 @@ Plugin 'slim-template/vim-slim'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'hashivim/vim-terraform'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'kylef/apiblueprint.vim'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
