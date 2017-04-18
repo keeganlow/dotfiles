@@ -1,10 +1,10 @@
-" Vundle stuff
-set nocompatible
-filetype off
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/vundle'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
@@ -36,6 +36,7 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'hashivim/vim-terraform'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'kylef/apiblueprint.vim'
+Plugin 'vim-syntastic/syntastic'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
@@ -55,7 +56,7 @@ else
 end
 
 " Attempt to determine the type of a file based on its name and possibly its
-" contents.  Use this to allow intelligent auto-indenting for each filetype,
+" contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
 filetype indent plugin on
 
@@ -72,7 +73,6 @@ set backspace=indent,eol,start
 " dialogue asking if you wish to save changed files.
 set confirm
 
-" 'cause we kick it oldschool
 set colorcolumn=81
 
 " Set the command window height to 2 lines, to avoid many cases of having to
@@ -213,11 +213,6 @@ let g:ctrlp_max_height = 90
 let g:ctrlp_max_depth = 40
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:90,results:90'
 
-" TODO: investigate flog.vim errors and fix
- "silent exe 'g:flog_enable'
-
-"let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
-
 " tells snipmate to only use custom snippets
 let g:snippets_dir = "~/.vim/snippets"
 
@@ -228,11 +223,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_close_button = 0
 
-
 let g:airline_theme='molokai'
-
-" quickly edit ruby snippets
-map <leader>r :tabnew ~/.vim/snippets/ruby.snippets<CR><CR>
 
 " quickly clear highlights
 map <leader>n :noh<CR>
@@ -253,7 +244,7 @@ nmap <leader><space> :call whitespace#strip_trailing()<CR>
 
 set clipboard=unnamed
 
-" reload files they change on disk (e.g., git checkout)
+" reload files when they change on disk (e.g., git checkout)
 set autoread
 
 " highlight whitespace symbols
@@ -261,8 +252,6 @@ hi NonText ctermfg=240 guifg=#666666
 
 " trailing whitespace intentional
 map <leader>a :Ag
-
-nmap <leader>d ?^\s*def <CR> :let @/ = "" <CR>
 
 nmap <leader>p :CtrlPClearAllCaches<CR>
 
@@ -295,15 +284,6 @@ if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
-
-" hardmode always
-"autocmd vimenter,bufnewfile,bufreadpost * silent! call hardmode()
-
-" indent the contents of the current ruby method
-function! IndentRubyMethod()
-  normal ma?def=%'a
-endfunction
-map <leader>i :call IndentRubyMethod()<CR>
 
 " green/red diffs
 highlight diffAdded guifg=#00bf00
@@ -348,7 +328,7 @@ map <Leader>vo :VimuxOpenPane<CR>
 " Interrupt any command running in the runner pane
 map <Leader>vx :VimuxInterruptRunner<CR>
 "
-" Function to tell Vimux to have make tmux zoom its runner pane.
+" Function to make tmux zoom its runner pane.
 function! VimuxZoomRunner()
   call VimuxInspectRunner()
   call system("tmux resize-pane -Z")
@@ -370,27 +350,8 @@ call arpeggio#map('n', '', 0, 'vp', ':VimuxPromptCommand<CR>')
 call arpeggio#map('n', '', 0, 'vq', ':VimuxCloseRunner<CR>')
 call arpeggio#map('n', '', 0, 'pr', 'VimuxRunCommand("clear; pr<CR>')
 
-" https://github.com/danchoi/ruby_bashrockets.vim/blob/master/ftplugin/ruby_bashrockets.vim
-function! s:bashrockets() range
-  let lnum = a:firstline
-  while lnum <= a:lastline
-    let newline = substitute(getline(lnum), ':\(\w\+\)\s*=>', '\1:', 'g')
-    call setline(lnum, newline)
-    let lnum += 1
-  endwhile
-endfunction
-command! -range Bashrockets :<line1>,<line2>call s:bashrockets()
-
-" convert { :this => :guy } to { this: :guy }
-function! s:fixhash() range
-  execute a:firstline.','.a:lastline 'call s:bashrockets()'
-  execute a:firstline.','.a:lastline 'Tab /:\zs'
-endfunction
-command! -range FixHash :<line1>,<line2>call s:fixhash()
-
 " Ugh, vim 7.4 doesn't indent the following by default - breaks shit
 let g:html_indent_inctags = "html,body,head,tbody"
-
 
 " use html highlighting for ejs
 au BufNewFile,BufRead *.ejs set filetype=html
@@ -399,5 +360,3 @@ au BufNewFile,BufRead *.ejs set filetype=html
 autocmd FileType go setlocal nolist tabstop=4 shiftwidth=4 expandtab softtabstop=4
 call arpeggio#map('n', '', 0, 'gr', ':call VimuxRunCommand("clear; go run " . bufname("%"))<CR>')
 
-" coffeescript stuff
-let @c = '^y$iconsole.log("%: kjA #{kjpA}")kj'
