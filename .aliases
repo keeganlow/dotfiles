@@ -1,6 +1,6 @@
 # Run this after editing any of your dotfiles
-alias :q='exit'
 alias src='source ~/.bashrc'
+alias :q='exit'
 
 alias wget="curl -O"
 alias octave='exec "/Applications/Octave.app/Contents/Resources/bin/octave"'
