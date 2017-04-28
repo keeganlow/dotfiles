@@ -246,6 +246,10 @@ if has("nvim")
   tnoremap <C-j> <C-\><C-n><C-w>j
   tnoremap <C-k> <C-\><C-n><C-w>k
   tnoremap <C-l> <C-\><C-n><C-w>l
+
+  " terminal mode specific settings
+  autocmd TermOpen * setlocal nospell
+  autocmd TermOpen * setlocal relativenumber
 endif
 
 nmap <leader><space> :call whitespace#strip_trailing()<CR>
