@@ -50,10 +50,12 @@ set t_Co=256
 color muon
 
 " Make the mouse (*gasp*) usable on large screens
-if has("mouse_sgr")
-    set ttymouse=sgr
-else
-    set ttymouse=xterm2
+if !has("nvim")
+  if has("mouse_sgr")
+      set ttymouse=sgr
+  else
+      set ttymouse=xterm2
+  end
 end
 
 " Attempt to determine the type of a file based on its name and possibly its
@@ -172,9 +174,6 @@ set wildmode=longest,list,full
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
-if exists('$TMUX')  " Support resizing in tmux
-  set ttymouse=xterm2
-endif
 
 " Fix Cursor in TMUX
 if exists('$TMUX')
@@ -240,6 +239,14 @@ imap kj <Esc>
 imap kJ <Esc>
 imap Kj <Esc>
 imap KJ <Esc>
+
+if has("nvim")
+  tnoremap kj <C-\><C-n>
+  tnoremap <C-h> <C-\><C-n><C-w>h
+  tnoremap <C-j> <C-\><C-n><C-w>j
+  tnoremap <C-k> <C-\><C-n><C-w>k
+  tnoremap <C-l> <C-\><C-n><C-w>l
+endif
 
 nmap <leader><space> :call whitespace#strip_trailing()<CR>
 
