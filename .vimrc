@@ -37,6 +37,7 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'kylef/apiblueprint.vim'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'machakann/vim-highlightedyank'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
