@@ -242,14 +242,20 @@ imap KJ <Esc>
 
 if has("nvim")
   tnoremap lkj <C-\><C-n>
-  tnoremap <C-h> <C-\><C-n><C-w>h
+  tnoremap <C-h> <C-\><C-n> :set norelativenumber<C-w>h
   tnoremap <C-j> <C-\><C-n><C-w>j
   tnoremap <C-k> <C-\><C-n><C-w>k
   tnoremap <C-l> <C-\><C-n><C-w>l
 
+  " TODO: add https://vi.stackexchange.com/a/3390
+
+  " this will always put you in insert mode when you move to the terminal window
+  " similar to tmux pane-based behavior
+  autocmd BufWinEnter,WinEnter term://* startinsert
+
+
   " terminal mode specific settings
   autocmd TermOpen * setlocal nospell
-  autocmd TermOpen * setlocal relativenumber
 endif
 
 nmap <leader><space> :call whitespace#strip_trailing()<CR>
