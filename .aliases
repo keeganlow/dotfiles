@@ -44,12 +44,14 @@ alias gdom='git diff origin/master'
 alias p='python'
 
 # run terminal vim from a macvim distribution
-alias vim='/Applications/MacVim/MacVim.app/Contents/MacOS/Vim'
+#alias vim='/Applications/MacVim/MacVim.app/Contents/MacOS/Vim'
+alias vim='nvim'
+alias te='nvim +terminal'
 alias yolo='kill -9'
 
 # If you're reading this and you aren't Keegan, do this. Trust me.
 alias ali='vim ~/dotfiles/.aliases'
-alias dotup='cd ~/dotfiles && ./bootstrap.sh && cd -'
+alias dotup='cd ~/dotfiles && ./bootstrap.sh && cd - && src'
 
 # Rails specific
 alias b='bundle'
