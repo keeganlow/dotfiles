@@ -38,6 +38,7 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'kylef/apiblueprint.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'machakann/vim-highlightedyank'
+Plugin 'vim-scripts/ReplaceWithRegister'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
@@ -376,5 +377,6 @@ au BufNewFile,BufRead *.ejs set filetype=html
 
 " golang stuff
 autocmd FileType go setlocal nolist tabstop=4 shiftwidth=4 expandtab softtabstop=4
-call arpeggio#map('n', '', 0, 'gr', ':call VimuxRunCommand("clear; go run " . bufname("%"))<CR>')
 
+" make y$ not grab the line break - this may turn out to be a terrible idea :D
+nmap $ g_
