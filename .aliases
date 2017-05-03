@@ -33,6 +33,7 @@ alias gd='git diff'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias grim="git rebase -i master"
 alias gcl="git config --list"
+alias gco="git checkout"
 
 # gitk without the shell spew
 alias gk='gitk --all > /dev/null 2>&1 &'
