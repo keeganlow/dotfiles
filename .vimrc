@@ -39,6 +39,8 @@ Plugin 'kylef/apiblueprint.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'vim-scripts/ReplaceWithRegister'
+Plugin 'kassio/neoterm'
+Plugin 'janko-m/vim-test'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
@@ -361,13 +363,42 @@ nnoremap <leader>sn :silent :! spotify next<CR> :redraw!<CR>
 nnoremap <leader>sb :silent :! spotify prev<CR> :redraw!<CR>
 
 " Chords
-call arpeggio#map('n', '', 0, 'ts', ':RunRubyFocusedTest<CR>')
-call arpeggio#map('n', '', 0, 'tf', ':call VimuxRunCommand("clear; bundle exec rspec " . bufname("%"))<CR>')
-call arpeggio#map('n', '', 0, 'vl', ':VimuxRunLastCommand<CR>')
+call arpeggio#map('n', '', 0, 'ts', ':TestNearest<CR>')
+call arpeggio#map('n', '', 0, 'tf', ':TestFile<CR>')
+call arpeggio#map('n', '', 0, 'vq', ':call neoterm#close()<cr>')
 
+
+" TODO: replace with neovim approaches
+call arpeggio#map('n', '', 0, 'vl', ':VimuxRunLastCommand<CR>')
 call arpeggio#map('n', '', 0, 'vp', ':VimuxPromptCommand<CR>')
-call arpeggio#map('n', '', 0, 'vq', ':VimuxCloseRunner<CR>')
-call arpeggio#map('n', '', 0, 'pr', 'VimuxRunCommand("clear; pr<CR>')
+
+" make test commands execute using dispatch.vim
+let test#strategy = "neoterm"
+
+let g:neoterm_position = 'vertical'
+"let g:neoterm_automap_keys = ',tt'
+
+" TODO: find mappings for these neoterm commands
+"nnoremap <silent> <f10> :TREPLSendFile<cr>
+"nnoremap <silent> <f9> :TREPLSendLine<cr>
+"vnoremap <silent> <f9> :TREPLSendSelection<cr>
+
+" Useful maps
+" hide/close terminal
+"nnoremap <silent> ,th :call neoterm#close()<cr>
+" clear terminal
+"nnoremap <silent> ,tl :call neoterm#clear()<cr>
+" kills the current job (send a <c-c>)
+"nnoremap <silent> ,tc :call neoterm#kill()<cr>
+
+
+
+" nmap <silent> <leader>t :TestNearest<CR>
+" nmap <silent> <leader>T :TestFile<CR>
+" nmap <silent> <leader>a :TestSuite<CR>
+" nmap <silent> <leader>l :TestLast<CR>
+" nmap <silent> <leader>g :TestVisit<CR>
+
 
 " Ugh, vim 7.4 doesn't indent the following by default - breaks shit
 let g:html_indent_inctags = "html,body,head,tbody"
