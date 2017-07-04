@@ -18,7 +18,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'edkolev/tmuxline.vim' "leave this commented out unless changing theme
 Plugin 'benmills/vimux'
-Plugin 'pgr0ss/vimux-ruby-test'
+"Plugin 'pgr0ss/vimux-ruby-test'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tommcdo/vim-fugitive-blame-ext'
 Plugin 'kana/vim-arpeggio'
@@ -27,7 +27,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/ruby-matchit'
 Plugin 'fatih/vim-go'
-Plugin 'elixir-lang/vim-elixir'
+"Plugin 'elixir-lang/vim-elixir'
 Plugin 'groenewege/vim-less'
 Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'mtscout6/vim-cjsx'
@@ -44,6 +44,9 @@ Plugin 'janko-m/vim-test'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'mattn/emmet-vim'
+"Plugin 'sbdchd/neoformat'
+Plugin 'mitermayer/vim-prettier'
 
 call vundle#end()            " required
 
@@ -365,7 +368,8 @@ nnoremap <leader>sb :silent :! spotify prev<CR> :redraw!<CR>
 " Chords
 call arpeggio#map('n', '', 0, 'ts', ':TestNearest<CR>')
 call arpeggio#map('n', '', 0, 'tf', ':TestFile<CR>')
-call arpeggio#map('n', '', 0, 'vq', ':call neoterm#close()<cr>')
+call arpeggio#map('n', '', 0, 'tq', ':call neoterm#close()<cr>')
+call arpeggio#map('n', '', 0, 'to', ':call neoterm#open()<cr>')
 
 
 " TODO: replace with neovim approaches
@@ -373,7 +377,8 @@ call arpeggio#map('n', '', 0, 'vl', ':VimuxRunLastCommand<CR>')
 call arpeggio#map('n', '', 0, 'vp', ':VimuxPromptCommand<CR>')
 
 " make test commands execute using dispatch.vim
-let test#strategy = "neoterm"
+"let test#strategy = "neoterm"
+let test#strategy = "vimux"
 
 let g:neoterm_position = 'vertical'
 "let g:neoterm_automap_keys = ',tt'
@@ -411,3 +416,10 @@ autocmd FileType go setlocal nolist tabstop=4 shiftwidth=4 expandtab softtabstop
 
 " make y$ not grab the line break - this may turn out to be a terrible idea :D
 nmap $ g_
+
+" prettier auto format
+" when running at every change you may want to disable quickfix
+let g:prettier#quickfix_enabled = 0
+
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql PrettierAsync
