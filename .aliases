@@ -28,6 +28,7 @@ function gcm() { git commit -m "$*"; }
 alias gs='git status -sb'
 alias ga='git add'
 alias gb='git branch'
+alias gg='git grep'
 alias gbg='git branch | grep'
 alias gd='git diff'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
@@ -41,6 +42,7 @@ alias td='git diff | grep TODO'
 alias gap='git add -p'
 alias g-='git checkout -'
 alias gdom='git diff origin/master'
+alias hb='hub browse'
 
 alias p='python'
 

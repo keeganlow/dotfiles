@@ -36,7 +36,8 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'hashivim/vim-terraform'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'kylef/apiblueprint.vim'
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
+Plugin 'neomake/neomake' " async linting - might be able to completely replace syntastic
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'vim-scripts/ReplaceWithRegister'
 Plugin 'kassio/neoterm'
@@ -47,13 +48,20 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'mattn/emmet-vim'
 "Plugin 'sbdchd/neoformat'
 Plugin 'mitermayer/vim-prettier'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'ayu-theme/ayu-vim'
 
 call vundle#end()            " required
 
 " set 256 colors
 set t_Co=256
 
-color muon
+set termguicolors     " enable true colors support
+"let ayucolor="light"  " for light version of theme
+"let ayucolor="mirage" " for mirage version of theme
+let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
+"color muon
 
 " Make the mouse (*gasp*) usable on large screens
 if !has("nvim")
@@ -155,7 +163,7 @@ set showcmd
 set smartcase
 
 " spell check comments
-set spell
+"set spell
 
 " if opening a file from :ls, :buffers, :files, etc. jump to open version
 " of the file, if one exists
@@ -416,10 +424,28 @@ autocmd FileType go setlocal nolist tabstop=4 shiftwidth=4 expandtab softtabstop
 
 " make y$ not grab the line break - this may turn out to be a terrible idea :D
 nmap $ g_
+vmap $ g_
 
 " prettier auto format
 " when running at every change you may want to disable quickfix
 let g:prettier#quickfix_enabled = 0
 
+" TODO RESUME: prettier trailing comma es5 mode or something
+" none|es5|all
+let g:prettier#config#trailing_comma = 'es5'
+
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.json,*.css,*.scss,*.less,*.graphql PrettierAsync
+
+" check for syntax / lint errors in js
+"let g:syntastic_javascript_checkers=['eslint']
+
+" have Syntastic use the project-specific binary of eslint
+"let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+
+
+let g:neomake_javascript_eslint_exe = system('PATH=$(npm bin):$PATH && which eslint | tr -d "\n"')
+let g:neomake_javascript_enabled_makers = ['eslint']
+
+" automatically apply linting when entering/editing/saving a file
+autocmd! BufWritePost,InsertLeave,BufReadPost *.js,*.jsx Neomake
