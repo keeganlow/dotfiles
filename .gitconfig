@@ -1,7 +1,7 @@
 [user]
 	name = Keegan Lowenstein
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = ~/.gitignore_global
 
 [color]
