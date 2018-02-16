@@ -57,6 +57,3 @@ set editing-mode vi
 set keymap vi-command
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# make fzf ctrl-r working in neovim term https://github.com/junegunn/fzf/issues/809
-[ -n "$NVIM_LISTEN_ADDRESS" ] && export FZF_DEFAULT_OPTS='--no-height'
