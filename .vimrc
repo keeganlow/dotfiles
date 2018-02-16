@@ -1,74 +1,78 @@
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.fzf
+
 call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-git'
+" Git
+Plugin 'tommcdo/vim-fugitive-blame-ext'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+
+" Tmux
+Plugin 'benmills/vimux'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'tmux-plugins/vim-tmux'
+
+" Neovim
+Plugin 'kassio/neoterm'
+
+" Ruby
+Plugin 'tpope/vim-endwise' " auto insert matching end in Ruby
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/ruby-matchit' " % to jump to matching end in Ruby
+
+" Frontend
+Plugin 'mattn/emmet-vim'
+Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
+Plugin 'slim-template/vim-slim'
+
+" Ops
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'hashivim/vim-terraform'
+
+" Docs
+Plugin 'kylef/apiblueprint.vim'
 Plugin 'tpope/vim-markdown'
-Plugin 'suan/vim-instant-markdown'
+Plugin 'vim-scripts/ReplaceWithRegister'
+
+" Styling
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'edkolev/tmuxline.vim' "leave this commented out unless changing theme
-Plugin 'benmills/vimux'
-"Plugin 'pgr0ss/vimux-ruby-test'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'tommcdo/vim-fugitive-blame-ext'
-Plugin 'kana/vim-arpeggio'
-Plugin 'rking/ag.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-scripts/ruby-matchit'
-Plugin 'fatih/vim-go'
-"Plugin 'elixir-lang/vim-elixir'
-Plugin 'groenewege/vim-less'
+
+" Misc
 Plugin 'ConradIrwin/vim-bracketed-paste'
-Plugin 'mtscout6/vim-cjsx'
-Plugin 'slim-template/vim-slim'
-Plugin 'tmux-plugins/vim-tmux'
-Plugin 'hashivim/vim-terraform'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'kylef/apiblueprint.vim'
-"Plugin 'vim-syntastic/syntastic'
-Plugin 'neomake/neomake' " async linting - might be able to completely replace syntastic
-Plugin 'machakann/vim-highlightedyank'
-Plugin 'vim-scripts/ReplaceWithRegister'
-Plugin 'kassio/neoterm'
 Plugin 'janko-m/vim-test'
+Plugin 'junegunn/fzf.vim'
+Plugin 'kana/vim-arpeggio'
+Plugin 'machakann/vim-highlightedyank'
+Plugin 'rking/ag.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
 
-Plugin 'pangloss/vim-javascript'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'mattn/emmet-vim'
-"Plugin 'sbdchd/neoformat'
-Plugin 'mitermayer/vim-prettier'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'ayu-theme/ayu-vim'
-
-call vundle#end()            " required
+call vundle#end() " required
 
 " set 256 colors
 set t_Co=256
 
-set termguicolors     " enable true colors support
-"let ayucolor="light"  " for light version of theme
-"let ayucolor="mirage" " for mirage version of theme
-let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
-"color muon
+if has('nvim-0.1.5') " True color in neovim wasn't added until 0.1.5
+  set termguicolors
+endif
+
+color muon
 
 " Make the mouse (*gasp*) usable on large screens
 if !has("nvim")
   if has("mouse_sgr")
-      set ttymouse=sgr
+    set ttymouse=sgr
   else
-      set ttymouse=xterm2
+    set ttymouse=xterm2
   end
 end
 
@@ -162,9 +166,6 @@ set showcmd
 " case-sensitive search if any caps
 set smartcase
 
-" spell check comments
-"set spell
-
 " if opening a file from :ls, :buffers, :files, etc. jump to open version
 " of the file, if one exists
 set switchbuf=useopen
@@ -200,32 +201,12 @@ endif
 
 let mapleader = ","
 
-" Use ctrl-[hjkl] to move focus between splits!
-" NOTE: https://github.com/christoomey/vim-tmux-navigator now takes care of this
-"nmap <silent> <c-k> :wincmd k<CR>
-"nmap <silent> <c-j> :wincmd j<CR>
-"nmap <silent> <c-h> :wincmd h<CR>
-"nmap <silent> <c-l> :wincmd l<CR>
-
 " vv to generate new vertical split
 nnoremap <silent> vv <C-w>v
+nnoremap <silent> <C-p> :FZF<CR>
 
 " save left pinky - map minus sign to colon!
 nore - :
-
-" Gitv settings:
-" do not allow gitv to generate control key mappings
-" as these collide with the above
-let g:Gitv_DoNotMapCtrlKey = 1
-nmap <leader>gv :Gitv --all<cr>
-nmap <leader>gV :Gitv! --all<cr>
-vmap <leader>gV :Gitv! --all<cr>
-
-" manage working dir:  the nearest ancestor that contains a .git
-let g:ctrlp_working_path_mode = 'r'
-let g:ctrlp_max_height = 90
-let g:ctrlp_max_depth = 40
-let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:90,results:90'
 
 " tells snipmate to only use custom snippets
 let g:snippets_dir = "~/.vim/snippets"
@@ -256,17 +237,19 @@ imap KJ <Esc>
 
 if has("nvim")
   tnoremap lkj <C-\><C-n>
-  tnoremap <C-h> <C-\><C-n><C-w>h
-  tnoremap <C-j> <C-\><C-n><C-w>j
-  tnoremap <C-k> <C-\><C-n><C-w>k
-  tnoremap <C-l> <C-\><C-n><C-w>l
+  " Commenting these out for now since I'm still relying on vimux most of the
+  " time. I'll have to figure out how to ignore tehse mappings if the terminal
+  " has been launched for fzf.
+  "tnoremap <C-h> <C-\><C-n><C-w>h
+  "tnoremap <C-j> <C-\><C-n><C-w>j
+  "tnoremap <C-k> <C-\><C-n><C-w>k
+  "tnoremap <C-l> <C-\><C-n><C-w>l
 
   " TODO: add https://vi.stackexchange.com/a/3390
 
   " this will always put you in insert mode when you move to the terminal window
   " similar to tmux pane-based behavior
   autocmd BufWinEnter,WinEnter term://* startinsert
-
 
   " terminal mode specific settings
   autocmd TermOpen * setlocal nospell
@@ -283,7 +266,7 @@ set autoread
 hi NonText ctermfg=240 guifg=#666666
 
 " trailing whitespace intentional
-map <leader>a :Ag
+map <leader>a :Ag 
 
 nmap <leader>p :CtrlPClearAllCaches<CR>
 
@@ -312,9 +295,6 @@ if executable('ag')
 
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
 " green/red diffs
@@ -329,18 +309,21 @@ autocmd InsertEnter * highlight  CursorLine ctermbg=236 ctermfg=None
 autocmd InsertLeave * highlight  CursorLine ctermbg=235 ctermfg=None
 
 " configure vimux-ruby-test so ruby tests can run in 20% horizontal pane.
-"let g:vimux_ruby_cmd_unit_test = "./bin/testunit"
 let g:vimux_ruby_cmd_unit_test = "bundle exec ruby"
-let g:vimux_ruby_cmd_all_tests = "rake test:parallel"
 
-" Run the current file with testunit
-map <Leader>Tf :call VimuxRunCommand("clear; bundle exec ruby " . bufname("%"))<CR>
+" Run file
+function TestFile()
+  :call VimuxRunCommand("clear; b exec website \"rspec " . bufname("%") . "\"")
+endfunction
+
+map <Leader>Tf :call TestFile()
 
 " Run the current test
-map <Leader>Ts :RunRubyFocusedTest<CR>
+function TestLine()
+  :call VimuxRunCommand("clear; b exec website \"rspec " . bufname("%") . ":" . line(".") . "\"")
+endfunction
 
-" Run all rails tests
-map <Leader>Ta :RunAllRailsTests<CR>
+map <Leader>Ts :call TestLine()
 
 " Prompt for a command to run
 map <Leader>vp :VimuxPromptCommand<CR>
@@ -369,83 +352,22 @@ endfunction
 " Zoom the runner pane (use <bind-key> z to restore runner pane)
 map <Leader>vz :call VimuxZoomRunner()<CR>
 
-" music
-nnoremap <leader>sn :silent :! spotify next<CR> :redraw!<CR>
-nnoremap <leader>sb :silent :! spotify prev<CR> :redraw!<CR>
-
 " Chords
-call arpeggio#map('n', '', 0, 'ts', ':TestNearest<CR>')
-call arpeggio#map('n', '', 0, 'tf', ':TestFile<CR>')
+call arpeggio#map('n', '', 0, 'ts', ':call TestLine()<CR>')
+call arpeggio#map('n', '', 0, 'tf', ':call TestFile()<CR>')
 call arpeggio#map('n', '', 0, 'tq', ':call neoterm#close()<cr>')
 call arpeggio#map('n', '', 0, 'to', ':call neoterm#open()<cr>')
-
-
-" TODO: replace with neovim approaches
 call arpeggio#map('n', '', 0, 'vl', ':VimuxRunLastCommand<CR>')
 call arpeggio#map('n', '', 0, 'vp', ':VimuxPromptCommand<CR>')
 
-" make test commands execute using dispatch.vim
-"let test#strategy = "neoterm"
+" neovim terminal strategy isn't quite configurable enough yet
 let test#strategy = "vimux"
 
 let g:neoterm_position = 'vertical'
-"let g:neoterm_automap_keys = ',tt'
-
-" TODO: find mappings for these neoterm commands
-"nnoremap <silent> <f10> :TREPLSendFile<cr>
-"nnoremap <silent> <f9> :TREPLSendLine<cr>
-"vnoremap <silent> <f9> :TREPLSendSelection<cr>
-
-" Useful maps
-" hide/close terminal
-"nnoremap <silent> ,th :call neoterm#close()<cr>
-" clear terminal
-"nnoremap <silent> ,tl :call neoterm#clear()<cr>
-" kills the current job (send a <c-c>)
-"nnoremap <silent> ,tc :call neoterm#kill()<cr>
-
-
-
-" nmap <silent> <leader>t :TestNearest<CR>
-" nmap <silent> <leader>T :TestFile<CR>
-" nmap <silent> <leader>a :TestSuite<CR>
-" nmap <silent> <leader>l :TestLast<CR>
-" nmap <silent> <leader>g :TestVisit<CR>
-
-
-" Ugh, vim 7.4 doesn't indent the following by default - breaks shit
-let g:html_indent_inctags = "html,body,head,tbody"
 
 " use html highlighting for ejs
 au BufNewFile,BufRead *.ejs set filetype=html
 
-" golang stuff
-autocmd FileType go setlocal nolist tabstop=4 shiftwidth=4 expandtab softtabstop=4
-
 " make y$ not grab the line break - this may turn out to be a terrible idea :D
 nmap $ g_
 vmap $ g_
-
-" prettier auto format
-" when running at every change you may want to disable quickfix
-let g:prettier#quickfix_enabled = 0
-
-" TODO RESUME: prettier trailing comma es5 mode or something
-" none|es5|all
-let g:prettier#config#trailing_comma = 'es5'
-
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.json,*.css,*.scss,*.less,*.graphql PrettierAsync
-
-" check for syntax / lint errors in js
-"let g:syntastic_javascript_checkers=['eslint']
-
-" have Syntastic use the project-specific binary of eslint
-"let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
-
-
-let g:neomake_javascript_eslint_exe = system('PATH=$(npm bin):$PATH && which eslint | tr -d "\n"')
-let g:neomake_javascript_enabled_makers = ['eslint']
-
-" automatically apply linting when entering/editing/saving a file
-autocmd! BufWritePost,InsertLeave,BufReadPost *.js,*.jsx Neomake
